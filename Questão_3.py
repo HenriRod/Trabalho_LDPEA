@@ -1,12 +1,9 @@
-# Bem vindos à Fábrica de Camisetas do Bruno Kostiuk
+#Primeiro print com a exigencia do nome completo
+print("Bem vindos à Fábrica de Camisetas do Henrique Rodrigues Da Luz")
 
-def escolha_modelo():
-    """
-    Pergunta o modelo desejado e retorna o valor do modelo.
-    Repete a pergunta se digitar uma opção diferente de: MCS/MLS/MCE/MLE.
-    """
+def escolha_modelo():       #Aqui tenho a funcão de escolha entre as camisas e definindo seus respectivos valores.  
     while True:
-        modelo = input("Escolha o modelo (MCS/MLS/MCE/MLE): ")
+        modelo = input("Entre com o modelo desejado\nMCS - Manga Curta Simples\nMLS - Manga Longa Simples\nMCE - manga Curta Com Estampa\nMLE - Manga Longa Com Estampa\n>> ")
         if modelo in ["MCS", "MLS", "MCE", "MLE"]:
             if modelo == "MCS":
                 return 1.80
@@ -14,57 +11,51 @@ def escolha_modelo():
                 return 2.10
             elif modelo == "MCE":
                 return 2.90
-            else:
+            else:           #Resto = MLE
                 return 3.20
         else:
-            print("Opção inválida. Tente novamente.")
+            print("Escolha inválida, entre com o modelo novamente.")       #encerando o laço
 
-def num_camisetas():
+def num_camisetas(): #DEF para filtrar a quantidade em relação aos  
     """
     Pergunta o número de camisetas e retorna o número com desconto seguindo a regra do enunciado.
     Repete a pergunta se digitar um valor acima de 20000 ou valor não numérico.
     """
     while True:
         try:
-            num = int(input("Digite o número de camisetas: "))
-            if num < 20:
-                return num
-            elif 20 <= num < 200:
-                return num * 0.95
-            elif 200 <= num < 2000:
-                return num * 0.93
-            elif 2000 <= num <= 20000:
-                return num * 0.88
+            qtd = int(input("Entre com o número de camisetas: "))
+            if qtd < 20:
+                return qtd
+            elif 20 <= qtd < 200:
+                return qtd * (5/100)
+            elif 200 <= qtd < 2000:
+                return qtd * (7/100)
+            elif 2000 <= qtd <= 20000:
+                return qtd * (12/100)
             else:
-                print("Quantidade de camisetas inválida. Tente novamente.")
+                print("Não aceitamos tantas camisetas de uma vez \n Por favor, entre como número de camisetas novamente.")
         except ValueError:
-            print("Valor não numérico. Tente novamente.")
+            print("Digite um numero entre 1 e 20000, caracteres especiais não são aceitos, Tente novamente.")
 
-def frete():
-    """
-    Pergunta pelo serviço adicional de frete e retorna o valor de apenas uma das opções de frete.
-    Repete a pergunta se digitar uma opção diferente de: 1/2/0.
-    """
+def frete():        #DEF para selecionar o valor do frete. com loop para evitar sair das opções pre-selecionadas.
     while True:
-        opcao = input("Escolha o frete (1 - Transportadora, 2 - Sedex, 0 - Retirada na fábrica): ")
-        if opcao in ["1", "2", "0"]:
-            if opcao == "1":
-                return 100
-            elif opcao == "2":
-                return 200
+        opcoes = input("Escolha o tipo de frete: \n1 - Transportadora - R$ 100.00\n2 - Sedex - R$ 200.00 \n 0 - Retirada na fábrica - R$ 0.00 ")
+        if opcoes in ["1", "2", "0"]:
+            if opcoes == "1":
+                return 100.00
+            elif opcoes == "2":
+                return 200.00
             else:
-                return 0
+                return 0.00
         else:
             print("Opção inválida. Tente novamente.")
 
-try:
-    print("Bem vindos à Fábrica de Camisetas do Bruno Kostiuk")
-    
+try:        #Definindo nome de String para as funções defs para realizar o calculo das variaveis 
     valor_modelo = escolha_modelo()
     quantidade_camisetas = num_camisetas()
     valor_frete = frete()
     
-    total = (valor_modelo * quantidade_camisetas) + valor_frete
+    total = (valor_modelo * quantidade_camisetas) + valor_frete 
     print(f"Total a pagar: R$ {total:.2f}")
 except KeyboardInterrupt:
     print("\nOperação interrompida pelo usuário.")
