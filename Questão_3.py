@@ -16,7 +16,7 @@ def escolha_modelo():       #Aqui tenho a funcão de escolha entre as camisas e 
         else:
             print("Escolha inválida, entre com o modelo novamente.")       #encerando o laço
 
-def num_camisetas(): #DEF para filtrar a quantidade em relação aos  
+def num_camisetas(): #DEF para filtrar a quantidade em relação ao porcentual de desconto.
     """
     Pergunta o número de camisetas e retorna o número com desconto seguindo a regra do enunciado.
     Repete a pergunta se digitar um valor acima de 20000 ou valor não numérico.
@@ -35,7 +35,7 @@ def num_camisetas(): #DEF para filtrar a quantidade em relação aos
             else:
                 print("Não aceitamos tantas camisetas de uma vez \n Por favor, entre como número de camisetas novamente.")
         except ValueError:
-            print("Digite um numero entre 1 e 20000, caracteres especiais não são aceitos, Tente novamente.")
+            print("Digite um numero entre 1 e 20000, caracteres especiais não são aceitos! Tente novamente.")
 
 def frete():        #DEF para selecionar o valor do frete. com loop para evitar sair das opções pre-selecionadas.
     while True:
@@ -57,7 +57,7 @@ try:        #Definindo nome de String para as funções defs para realizar o cal
     
     total = (valor_modelo * quantidade_camisetas) + valor_frete 
     print(f"Total a pagar: R$ {total:.2f}")
-except KeyboardInterrupt:
-    print("\nOperação interrompida pelo usuário.")
 except Exception as e:
     print(f"Erro: {e}")
+except KeyboardInterrupt:
+    print("\nOperação interrompida pelo usuário.")
